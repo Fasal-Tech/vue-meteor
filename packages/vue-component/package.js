@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'akryum:vue-component',
+  name: 'mrspark2591:vue-component',
   version: '0.15.2',
   summary: 'VueJS single-file components that hot-reloads',
   git: 'https://github.com/Akryum/meteor-vue-component',
@@ -45,5 +45,5 @@ Package.registerBuildPlugin({
 Package.onUse(function (api) {
   api.use('isobuild:compiler-plugin@1.0.0')
   api.use('akryum:vue-component-dev-server@0.1.4')
-  api.use('akryum:vue-component-dev-client@0.4.7')
+  api.use('shivangkar:vue-component-dev-client@0.0.1')
 })
