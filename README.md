@@ -18,7 +18,6 @@
 <br>
 <br>
 <br>
-test
 
 vue+meteor is a set of packages to help you create awesome apps quickly and efficiently with two great web technologies:
 
