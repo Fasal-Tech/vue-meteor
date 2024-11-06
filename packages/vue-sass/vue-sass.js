@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import sass from 'node-sass'
-import { Meteor } from 'meteor/meteor'
+import sass from 'sass'
 
 global.vue = global.vue || {}
 global.vue.lang = global.vue.lang || {}
@@ -79,7 +78,7 @@ function discoverImportPath (importPath) {
 //   return 'packages/' + match[1] + '/' + match[2]
 // }
 
-global.vue.lang.scss = Meteor.wrapAsync(function ({
+global.vue.lang.scss = function ({
   source,
   basePath,
   inputFile,
@@ -105,9 +104,9 @@ global.vue.lang.scss = Meteor.wrapAsync(function ({
       })
     }
   })
-})
+}
 
-global.vue.lang.sass = Meteor.wrapAsync(function ({
+global.vue.lang.sass = function ({
   source,
   basePath,
   inputFile,
@@ -134,4 +133,4 @@ global.vue.lang.sass = Meteor.wrapAsync(function ({
       })
     }
   })
-})
+}
