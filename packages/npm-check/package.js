@@ -1,6 +1,6 @@
 Package.describe({
-  name: 'akryum:npm-check',
-  version: '0.1.2',
+  name: 'mrspark:npm-check',
+  version: '1.0.0',
   summary: 'Check npm peer-dependencies and auto-installs them.',
   git: 'https://github.com/Akryum/meteor-vue-component/tree/master/packages/npm-check',
   documentation: 'README.md',

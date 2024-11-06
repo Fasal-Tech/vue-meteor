@@ -85,11 +85,11 @@ isNpmPackageOlder = function (depVersion, currentVersion) {
   return false
 }
 
-execSync = Meteor.wrapAsync((...params) => {
+execSync = (...params) => {
   const cb = params.pop()
   exec(...params, (error, stdout, stderr) => {
     stdout && console.log(stdout.toString())
     stderr && console.error(stderr.toString())
     cb(error)
   })
-})
+}
