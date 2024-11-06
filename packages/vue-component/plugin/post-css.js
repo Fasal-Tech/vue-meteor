@@ -5,11 +5,10 @@ Npm.require('app-module-path/cwd')
 import postcss from 'postcss'
 import selectorParser from 'postcss-selector-parser'
 import load from 'postcss-load-config'
-import { Meteor } from 'meteor/meteor'
 
 let loaded
 
-loadPostcssConfig = Meteor.wrapAsync(function (cb) {
+loadPostcssConfig = function (cb) {
   let error = null
   if (!loaded) {
     loaded = load({'vue-meteor': true}).catch(err => {
@@ -39,7 +38,7 @@ loadPostcssConfig = Meteor.wrapAsync(function (cb) {
       options,
     })
   })
-})
+}
 
 scopeId = postcss.plugin('add-id', ({ id }) => root => {
   const keyframes = Object.create(null)

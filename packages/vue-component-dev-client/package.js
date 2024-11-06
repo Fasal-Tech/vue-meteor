@@ -1,6 +1,6 @@
 Package.describe({
-  name: 'akryum:vue-component-dev-client',
-  version: '0.4.7',
+  name: 'mrspark:vue-component-dev-client',
+  version: '1.0.0',
   summary: 'Hot-reloading client for vue components',
   git: 'https://github.com/Akryum/meteor-vue-component',
   documentation: 'README.md',
@@ -8,9 +8,9 @@ Package.describe({
 })
 
 Package.onUse(function (api) {
-  api.use('ecmascript@0.12.7')
-  api.use('reload@1.3.0')
-  api.use('autoupdate@1.6.0')
+  api.use('ecmascript@0.16.9')
+  api.use('reload@1.3.2')
+  api.use('autoupdate@2.0.0')
   api.mainModule('client/dev-client.js', 'client')
 })
 
