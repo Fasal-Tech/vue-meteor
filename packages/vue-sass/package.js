@@ -1,6 +1,6 @@
 Package.describe({
   name: 'mrspark:vue-sass',
-  version: '1.0.0',
+  version: '1.0.1',
   summary: 'Add sass and scss support for vue components',
   git: 'https://github.com/Akryum/meteor-vue-component',
   documentation: 'README.md',

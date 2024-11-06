@@ -83,26 +83,16 @@ global.vue.lang.scss = function ({
   basePath,
   inputFile,
   dependencyManager,
-}, cb) {
+}) {
   if (!source.trim()) {
-    cb(null, { css: '' })
     return
   }
-  sass.render({
+  return sass.renderSync({
     data: source,
     importer: resolveImport(dependencyManager),
     outFile: inputFile.getPathInPackage() + '.css',
     sourceMap: true,
     sourceMapContents: true,
-  }, function (error, result) {
-    if (error) {
-      cb(error, null)
-    } else {
-      cb(null, {
-        css: result.css.toString(),
-        map: result.map.toString(),
-      })
-    }
   })
 }
 
@@ -111,26 +101,16 @@ global.vue.lang.sass = function ({
   basePath,
   inputFile,
   dependencyManager,
-}, cb) {
+}) {
   if (!source.trim()) {
-    cb(null, { css: '' })
     return
   }
-  sass.render({
+  return sass.renderSync({
     data: source,
     importer: resolveImport(dependencyManager),
     outFile: basePath + '.css',
     sourceMap: true,
     sourceMapContents: true,
     indentedSyntax: true,
-  }, function (error, result) {
-    if (error) {
-      cb(error, null)
-    } else {
-      cb(null, {
-        css: result.css.toString(),
-        map: result.map.toString(),
-      })
-    }
   })
 }
