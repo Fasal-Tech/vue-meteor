@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'akryum:vue-stylus',
+  name: 'mrspark:vue-stylus',
   version: '0.1.3',
   summary: 'Add stylus support for vue components',
   git: 'https://github.com/Akryum/meteor-vue-component',

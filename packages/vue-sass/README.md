@@ -6,7 +6,7 @@ This meteor package adds [sass](http://sass-lang.com) support in your single-fil
 
 ## Installation
 
-    meteor add akryum:vue-sass
+    meteor add mrspark:vue-sass
 
 
 ## Usage

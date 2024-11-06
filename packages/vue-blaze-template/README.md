@@ -4,7 +4,7 @@ Compatibility: **Vue 1.x, Vue 2.x**
 
 ## Installation
 
-    meteor add akryum:vue-blaze-template
+    meteor add mrspark:vue-blaze-template
 
 ## Usage
 

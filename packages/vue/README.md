@@ -9,7 +9,7 @@ Declarative subscriptions and meteor reactive data (subscriptions, collections, 
 ## Installation
 
 ```
-meteor add akryum:vue
+meteor add mrspark:vue
 ```
 
 This will also update your `package.json` to include `vue`. If you want to use Vue 2.x, install it manually:

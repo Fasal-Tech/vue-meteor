@@ -33,7 +33,7 @@ class VueRouterCompiler extends CachingCompiler {
     code = code.replace(jsExportDefaultReg, 'return')
     code = code.replace(componentReg, 'component: require($1).default')
     code = 'let r = (()=>{' + code + `})();
-    import { RouterFactory } from 'meteor/akryum:vue-router2';
+    import { RouterFactory } from 'meteor/mrspark:vue-router2';
     RouterFactory.configure(factory => { factory.addRoutes(r); })`
     let map = ''
 

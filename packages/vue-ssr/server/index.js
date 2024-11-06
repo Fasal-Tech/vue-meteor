@@ -38,7 +38,7 @@ VueSSR.defaultAppTemplate = `
     Here is an example of server-side code:
   </p>
   <pre style="background: #ddd; padding: 12px; border-radius: 3px; font-family: monospace;">import Vue from 'vue'
-import { VueSSR } from 'meteor/akryum:vue-ssr'
+import { VueSSR } from 'meteor/mrspark:vue-ssr'
 
 function createApp () {
   return new Vue({

@@ -8,7 +8,7 @@ It allows you to write your components in [this format](https://vuejs.org/v2/gui
 ## Installation
 
 ```
-meteor add akryum:vue-component
+meteor add mrspark:vue-component
 ```
 
 ## Usage
@@ -147,19 +147,19 @@ Using the power of preprocessors, you can use a different language (like less or
 
 Packages for `<template>` tag:
 
-- [akryum:vue-pug](https://github.com/Akryum/vue-meteor/tree/master/packages/vue-pug)
-- [akryum:vue-jade](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-jade)
+- [mrspark:vue-pug](https://github.com/Akryum/vue-meteor/tree/master/packages/vue-pug)
+- [mrspark:vue-jade](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-jade)
 
 Packages for `<script>` tag:
 
- - [akryum:vue-coffee](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-coffee)
+ - [mrspark:vue-coffee](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-coffee)
  - [nathantreid:vue-typescript](https://github.com/nathantreid/meteor-vue-typescript)
 
 Packages for `<style>` tag:
 
- - [akryum:vue-less](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-less)
- - [akryum:vue-sass](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-sass)
- - [akryum:vue-stylus](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-stylus)
+ - [mrspark:vue-less](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-less)
+ - [mrspark:vue-sass](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-sass)
+ - [mrspark:vue-stylus](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-stylus)
  - [nathantreid:vue-css-modules](https://github.com/nathantreid/vue-css-modules) enables interop with nathantreid:css-modules, including support for composing from other files.
 
 Get involved! Add your own package with a PR! :+1:

@@ -6,7 +6,7 @@ This meteor package adds [pug](http://pugjs.org) support in your single-file `.v
 
 ## Installation
 
-    meteor add akryum:vue-pug
+    meteor add mrspark:vue-pug
 
 
 ## Usage

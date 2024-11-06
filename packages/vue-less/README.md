@@ -6,7 +6,7 @@ This meteor package adds [less](http://lesscss.org/) support in your single-file
 
 ## Installation
 
-    meteor add akryum:vue-less
+    meteor add mrspark:vue-less
 
 
 ## Usage

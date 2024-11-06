@@ -1,6 +1,6 @@
 accounts-base@1.4.2
 akryum:npm-check@0.1.0
-akryum:vue-ssr@0.3.0
+mrspark:vue-ssr@0.3.0
 allow-deny@1.1.0
 babel-compiler@7.0.0
 babel-runtime@1.2.2

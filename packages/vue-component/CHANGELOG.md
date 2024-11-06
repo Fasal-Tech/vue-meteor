@@ -59,7 +59,7 @@
 
 ## 0.8.3 - 2017-02-01
 
- - Relaxed vue-template-compiler into `akryum:vue-compiler`
+ - Relaxed vue-template-compiler into `mrspark:vue-compiler`
  - Fixed manually imported component files in production mode. Need an upstream fix for auto-imported components.
 
 ## 0.8.1 - 2017-01-04
@@ -113,7 +113,7 @@
 
 ## 0.4.0 - 2016-06-24
 
- - Added akryum:vue-i18n support.
+ - Added mrspark:vue-i18n support.
  - The component definitions have the new `packageName` attribute.
  - Fix [Issue #5](https://github.com/Akryum/meteor-vue-component/issues/5)
 
@@ -173,7 +173,7 @@
 
 ## 0.0.3 - 2016-06-01
 
- - `lang` attribute implementation for `<style>` tags. Now exposes a config object to add lang support with other packages: `global.vue.lang` (see [akryum:vue-less](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-less)).
+ - `lang` attribute implementation for `<style>` tags. Now exposes a config object to add lang support with other packages: `global.vue.lang` (see [mrspark:vue-less](https://github.com/Akryum/meteor-vue-component/tree/master/packages/vue-less)).
 
 ## 0.0.2 - 2016-05-30
 

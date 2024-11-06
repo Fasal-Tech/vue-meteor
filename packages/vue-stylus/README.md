@@ -6,7 +6,7 @@ This meteor package adds [stylus](http://stylus-lang.com/) support in your singl
 
 ## Installation
 
-    meteor add akryum:vue-stylus
+    meteor add mrspark:vue-stylus
 
 
 ## Usage

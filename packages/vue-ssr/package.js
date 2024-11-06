@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'akryum:vue-ssr',
+  name: 'mrspark:vue-ssr',
   version: '0.5.0',
   summary: 'Render Vue server-side',
   git: 'https://github.com/Akryum/meteor-vue-component',

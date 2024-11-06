@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'akryum:vue-coffee',
+  name: 'mrspark:vue-coffee',
   version: '0.4.2',
   summary: 'Add coffee support for vue components',
   git: 'https://github.com/Akryum/meteor-vue-component',
