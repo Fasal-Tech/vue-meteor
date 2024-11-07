@@ -363,7 +363,9 @@ const hotCompile = Meteor.bindEnvironment(async function hotCompile (filePath, i
     if (compileResult.styles.length !== 0) {
       for (let style of compileResult.styles) {
         if (style && style.css) {
-          css += style.css
+          if (style && style.css) {
+            css += style.css
+          }
         }
       }
 
