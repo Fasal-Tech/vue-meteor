@@ -88,6 +88,7 @@ global.vue.lang.scss = function ({
     return
   }
   return sass.renderSync({
+    silenceDeprecations: ['legacy-js-api'],
     data: source,
     importer: resolveImport(dependencyManager),
     outFile: inputFile.getPathInPackage() + '.css',
@@ -106,6 +107,7 @@ global.vue.lang.sass = function ({
     return
   }
   return sass.renderSync({
+    silenceDeprecations: ['legacy-js-api'],
     data: source,
     importer: resolveImport(dependencyManager),
     outFile: basePath + '.css',
