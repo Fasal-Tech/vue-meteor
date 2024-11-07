@@ -39,7 +39,7 @@ VueComponentCompiler = class VueCompo extends CachingCompiler {
     let resolver
     const promise = new Promise(r => resolver = r)
 
-    async.eachLimit(inputFiles, this._maxParallelism, (inputFile, cb) => {
+    async.eachLimit(inputFiles, this._maxParallelism, async (inputFile, cb) => {
       if (!this.isIgnored(inputFile)) {
         let error = null
         try {
@@ -55,7 +55,7 @@ VueComponentCompiler = class VueCompo extends CachingCompiler {
 
           if (!compileResult) {
             cacheMisses.push(inputFile.getDisplayPath())
-            compileResult = this.compileOneFile(inputFile)
+            compileResult = await this.compileOneFile(inputFile)
 
             if (!compileResult) {
               // compileOneFile should have called inputFile.error.
@@ -137,7 +137,7 @@ VueComponentCompiler = class VueCompo extends CachingCompiler {
     return compileResult.code.length + compileResult.map.length
   }
 
-  compileOneFile (inputFile) {
+  async compileOneFile (inputFile) {
     const contents = inputFile.getContentsAsString()
     return compileOneFileWithContents(inputFile, contents, {
       template: true,

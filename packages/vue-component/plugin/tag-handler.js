@@ -268,7 +268,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
               })
             } else {
               // console.log(`Compiling <style> in lang ${lang}...`)
-              let result = await compile({
+              let result = compile({
                 source: css,
                 inputFile: this.inputFile,
                 basePath: sfcBlock.module,
@@ -335,7 +335,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
             try {
               let compile = global.vue.cssModules
               // console.log(`Compiling <style> css modules ${lang}...`)
-              let result = await compile({
+              let result = compile({
                 source: css,
                 map: cssMap,
                 inputFile: this.inputFile,
