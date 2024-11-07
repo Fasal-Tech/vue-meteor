@@ -50,7 +50,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
     }
   }
 
-  getResults () {
+  async getResults () {
     let map = ''
     let source = this.inputFile.getContentsAsString()
     let packageName = this.inputFile.getPackageName()
@@ -74,9 +74,9 @@ VueComponentTagHandler = class VueComponentTagHandler {
 
       // treating the <script> default as if it were `lang="js"`
       // since some tools (like meteor-vuetify-loader) require to have the attribute present to work
-      // if (sfcBlock.type === 'script' && !sfcBlock.lang) {
-      //   sfcBlock.lang = 'js'
-      // }    
+      if (sfcBlock.type === 'script' && !sfcBlock.lang) {
+        sfcBlock.lang = 'js'
+      }
       // Lang
       if (sfcBlock.lang !== undefined) {
         let lang = sfcBlock.lang
@@ -268,7 +268,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
               })
             } else {
               // console.log(`Compiling <style> in lang ${lang}...`)
-              let result = compile({
+              let result = await compile({
                 source: css,
                 inputFile: this.inputFile,
                 basePath: sfcBlock.module,
@@ -296,7 +296,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
         let plugins = []
         let customPostcssOptions = {}
         try {
-          customPostcssOptions = loadPostcssConfig()
+          customPostcssOptions = await loadPostcssConfig()
         } catch (e) {
           throwCompileError({
             inputFile: this.inputFile,
@@ -335,7 +335,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
             try {
               let compile = global.vue.cssModules
               // console.log(`Compiling <style> css modules ${lang}...`)
-              let result = compile({
+              let result = await compile({
                 source: css,
                 map: cssMap,
                 inputFile: this.inputFile,
@@ -371,7 +371,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
 
               // Generate a class name in the form of .<vue_component_name>_<local_class_name>__<hash>
               // Ref.: https://github.com/css-modules/postcss-modules#generating-scoped-names
-              generateScopedName: '[name]_[local]__[hash:base64:5]'
+              generateScopedName: '[name]_[local]__[hash:base64:5]',
             }))
             isAsync = true
           }
@@ -385,7 +385,7 @@ VueComponentTagHandler = class VueComponentTagHandler {
         // Postcss result
         let result
         if (isAsync) {
-          result = Promise.await(postcss(plugins).process(css, postcssOptions))
+          result = await postcss(plugins).process(css, postcssOptions)
         } else {
           result = postcss(plugins).process(css, postcssOptions)
         }

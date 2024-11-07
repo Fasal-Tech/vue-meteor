@@ -8,7 +8,7 @@ import load from 'postcss-load-config'
 
 let loaded
 
-loadPostcssConfig = function (cb) {
+loadPostcssConfig = async function () {
   let error = null
   if (!loaded) {
     loaded = load({'vue-meteor': true}).catch(err => {
@@ -21,23 +21,22 @@ loadPostcssConfig = function (cb) {
     })
   }
 
-  loaded.then(config => {
-    let plugins = []
-    let options = {}
+  const config = await loaded
+  let plugins = []
+  let options = {}
 
-    // merge postcss config file
-    if (config && config.plugins) {
-      plugins = plugins.concat(config.plugins)
-    }
-    if (config && config.options) {
-      options = Object.assign({}, config.options, options)
-    }
+  // merge postcss config file
+  if (config && config.plugins) {
+    plugins = plugins.concat(config.plugins)
+  }
+  if (config && config.options) {
+    options = Object.assign({}, config.options, options)
+  }
 
-    cb(error, {
-      plugins,
-      options,
-    })
-  })
+  return {
+    plugins,
+    options,
+  }
 }
 
 scopeId = postcss.plugin('add-id', ({ id }) => root => {

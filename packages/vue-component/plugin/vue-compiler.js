@@ -166,7 +166,9 @@ VueComponentCompiler = class VueCompo extends CachingCompiler {
     let cssModulesHash = ''
     if (compileResult.styles.length !== 0) {
       for (let style of compileResult.styles) {
-        css += style.css
+        if (style && style.css) {
+          css += style.css
+        }
       }
 
       cssHash = Hash(css)
@@ -297,7 +299,7 @@ class ComponentWatcher {
     this._watchPath(filePath)
   }
 
-  refresh (parts) {
+  async refresh (parts) {
     if (!parts) {
       parts = {
         template: true,
@@ -306,7 +308,7 @@ class ComponentWatcher {
       }
     }
     try {
-      hotCompile(this.filePath, this.inputFile, this.cache, parts)
+      await hotCompile(this.filePath, this.inputFile, this.cache, parts)
     } catch (e) {
       console.error(e)
     }
@@ -341,12 +343,12 @@ class ComponentWatcher {
   }
 }
 
-const hotCompile = Meteor.bindEnvironment(function hotCompile (filePath, inputFile, cache, parts) {
+const hotCompile = Meteor.bindEnvironment(async function hotCompile (filePath, inputFile, cache, parts) {
   let inputFilePath = inputFile.getPathInPackage()
   let contents = Plugin.fs.readFileSync(filePath, {
     encoding: 'utf8',
   })
-  let compileResult = compileOneFileWithContents(inputFile, contents, parts, babelOptions)
+  let compileResult = await compileOneFileWithContents(inputFile, contents, parts, babelOptions)
   if (!compileResult) {
     return
   }
@@ -360,7 +362,9 @@ const hotCompile = Meteor.bindEnvironment(function hotCompile (filePath, inputFi
   if (parts.style) {
     if (compileResult.styles.length !== 0) {
       for (let style of compileResult.styles) {
-        css += style.css
+        if (style && style.css) {
+          css += style.css
+        }
       }
 
       // Hot-reloading
@@ -522,7 +526,7 @@ class DependencyManager {
   }
 }
 
-function compileTags (inputFile, sfcDescriptor, parts, babelOptions, dependencyManager) {
+async function compileTags (inputFile, sfcDescriptor, parts, babelOptions, dependencyManager) {
   var handler = new VueComponentTagHandler({
     inputFile,
     parts,
@@ -534,7 +538,7 @@ function compileTags (inputFile, sfcDescriptor, parts, babelOptions, dependencyM
   return handler.getResults()
 }
 
-function compileOneFileWithContents (inputFile, contents, parts, babelOptions) {
+async function compileOneFileWithContents (inputFile, contents, parts, babelOptions) {
   try {
     const cache = Cache.getCache(inputFile)
     const compiler = loadPackage(inputFile, 'vue-template-compiler', loadDefaultTemplateCompiler)
