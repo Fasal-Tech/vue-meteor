@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import {exec} from 'child_process'
-import {Meteor} from 'meteor/meteor'
+import ChildProcess from 'child_process'
 
 CWD = path.resolve('./')
 
@@ -86,10 +85,5 @@ isNpmPackageOlder = function (depVersion, currentVersion) {
 }
 
 execSync = (...params) => {
-  const cb = params.pop()
-  exec(...params, (error, stdout, stderr) => {
-    stdout && console.log(stdout.toString())
-    stderr && console.error(stderr.toString())
-    cb(error)
-  })
+  ChildProcess.execSync(...params, {stdio: 'inherit'})
 }
