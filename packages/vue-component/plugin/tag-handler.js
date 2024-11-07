@@ -275,8 +275,8 @@ VueComponentTagHandler = class VueComponentTagHandler {
                 dependencyManager: this.dependencyManager,
               })
               // console.log('Css result', result)
-              css = result.css
-              cssMap = result.map
+              css = result?.css
+              cssMap = result?.map
             }
           } catch (e) {
             throwCompileError({
@@ -344,9 +344,9 @@ VueComponentTagHandler = class VueComponentTagHandler {
                 cssModules,
               })
               // console.log('Css result', result)
-              css = result.css
-              cssMap = result.map
-              cssModules = result.cssModules
+              css = result?.css
+              cssMap = result?.map
+              cssModules = result?.cssModules
               if (result.js) {
                 js += result.js
               }
@@ -390,8 +390,8 @@ VueComponentTagHandler = class VueComponentTagHandler {
           result = postcss(plugins).process(css, postcssOptions)
         }
 
-        css = result.css
-        cssMap = result.map
+        css = result?.css
+        cssMap = result?.map
 
         styles.push({
           css,
