@@ -74,9 +74,9 @@ VueComponentTagHandler = class VueComponentTagHandler {
 
       // treating the <script> default as if it were `lang="js"`
       // since some tools (like meteor-vuetify-loader) require to have the attribute present to work
-      if (sfcBlock.type === 'script' && !sfcBlock.lang) {
-        sfcBlock.lang = 'js'
-      }
+      // if (sfcBlock.type === 'script' && !sfcBlock.lang) {
+      //   sfcBlock.lang = 'js'
+      // }
       // Lang
       if (sfcBlock.lang !== undefined) {
         let lang = sfcBlock.lang

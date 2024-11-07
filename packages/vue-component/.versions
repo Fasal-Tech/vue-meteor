@@ -28,7 +28,7 @@ modern-browsers@0.1.11
 modules@0.20.2
 modules-runtime@0.13.2
 mongo-id@1.0.9
-mrspark:vue-component@1.0.4
+mrspark:vue-component@1.0.5
 mrspark:vue-component-dev-client@1.0.0
 mrspark:vue-component-dev-server@1.0.0
 promise@1.0.0
