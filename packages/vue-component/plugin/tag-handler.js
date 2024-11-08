@@ -268,15 +268,17 @@ VueComponentTagHandler = class VueComponentTagHandler {
               })
             } else {
               // console.log(`Compiling <style> in lang ${lang}...`)
-              let result = compile({
-                source: css,
-                inputFile: this.inputFile,
-                basePath: sfcBlock.module,
-                dependencyManager: this.dependencyManager,
-              })
-              // console.log('Css result', result)
-              css = result?.css
-              cssMap = result?.map
+              if (css) {
+                let result = compile({
+                  source: css,
+                  inputFile: this.inputFile,
+                  basePath: sfcBlock.module,
+                  dependencyManager: this.dependencyManager,
+                })
+                // console.log('Css result', result)
+                css = result?.css
+                cssMap = result?.map.toString()
+              }
             }
           } catch (e) {
             throwCompileError({

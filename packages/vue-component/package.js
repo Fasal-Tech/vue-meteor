@@ -1,6 +1,6 @@
 Package.describe({
   name: 'mrspark:vue-component',
-  version: '1.0.7',
+  version: '1.0.8',
   summary: 'VueJS single-file components that hot-reloads',
   git: 'https://github.com/Akryum/meteor-vue-component',
   documentation: 'README.md',
@@ -8,11 +8,7 @@ Package.describe({
 
 Package.registerBuildPlugin({
   name: 'vue-component',
-  use: [
-    'ecmascript@0.16.9',
-    'caching-compiler@2.0.1',
-    'babel-compiler@7.11.1',
-  ],
+  use: ['ecmascript@0.16.9', 'caching-compiler@2.0.1', 'babel-compiler@7.11.1'],
   sources: [
     'plugin/regexps.js',
     'plugin/utils.js',
@@ -28,13 +24,13 @@ Package.registerBuildPlugin({
     'postcss-selector-parser': '2.2.3',
     'postcss-modules': '1.4.1',
     'socket.io': '2.2.0',
-    'async': '2.6.2',
+    '@supercharge/promise-pool': '3.2.0',
     'lodash': '4.17.11',
-    'hash-sum': '1.0.2',
-    'source-map': '0.7.3',
+    'hash-sum': '2.0.0',
+    'source-map': '0.7.4',
     'source-map-merger': '0.2.0',
     'generate-source-map': '0.0.5',
-    'autoprefixer': '9.5.1',
+    'autoprefixer': '9.8.6',
     'vue-template-compiler': '2.7.14',
     'vue-template-es2015-compiler': '1.9.1',
     'colors': '1.3.3',

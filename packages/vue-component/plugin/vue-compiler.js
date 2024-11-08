@@ -1,5 +1,5 @@
 import fs from 'fs'
-import async from 'async'
+import {PromisePool} from '@supercharge/promise-pool'
 import { Meteor } from 'meteor/meteor'
 import _ from 'lodash'
 import 'colors'
@@ -34,53 +34,46 @@ VueComponentCompiler = class VueCompo extends CachingCompiler {
 
     this.updateIgnoredConfig(inputFiles)
 
-    // console.log(`Found ${inputFiles.length} files.`)
+    try {
+      await PromisePool.withConcurrency(this._maxParallelism)
+        .for(inputFiles)
+        .process(async inputFile => {
+          if (!this.isIgnored(inputFile)) {
+            let error = null
+            try {
+              const cacheKey = this._deepHash(this.getCacheKey(inputFile))
+              let compileResult = this._cache.get(cacheKey)
+              if (!compileResult) {
+                compileResult = this._readCache(cacheKey)
+                if (compileResult) {
+                  this._cacheDebug(`Loaded ${inputFile.getDisplayPath()}`)
+                }
+              }
+              if (!compileResult) {
+                cacheMisses.push(inputFile.getDisplayPath())
+                compileResult = await this.compileOneFile(inputFile)
+                if (!compileResult) {
+                  // compileOneFile should have called inputFile.error.
+                  //  We don't cache failures for now.
+                  return
+                }
 
-    let resolver
-    const promise = new Promise(r => resolver = r)
+                // Save what we've compiled.
+                this._cache.set(cacheKey, compileResult)
+                this._writeCacheAsync(cacheKey, compileResult)
+              }
 
-    async.eachLimit(inputFiles, this._maxParallelism, async (inputFile, cb) => {
-      if (!this.isIgnored(inputFile)) {
-        let error = null
-        try {
-          const cacheKey = this._deepHash(this.getCacheKey(inputFile))
-          let compileResult = this._cache.get(cacheKey)
-
-          if (!compileResult) {
-            compileResult = this._readCache(cacheKey)
-            if (compileResult) {
-              this._cacheDebug(`Loaded ${inputFile.getDisplayPath()}`)
+              this.addCompileResult(inputFile, compileResult)
+            } catch (e) {
+              console.error(error)
+              error = e
+              return error
             }
           }
-
-          if (!compileResult) {
-            cacheMisses.push(inputFile.getDisplayPath())
-            compileResult = await this.compileOneFile(inputFile)
-
-            if (!compileResult) {
-              // compileOneFile should have called inputFile.error.
-              //  We don't cache failures for now.
-              return
-            }
-
-            // Save what we've compiled.
-            this._cache.set(cacheKey, compileResult)
-            this._writeCacheAsync(cacheKey, compileResult)
-          }
-
-          this.addCompileResult(inputFile, compileResult)
-        } catch (e) {
-          error = e
-        } finally {
-          cb(error)
-        }
-      } else {
-        cb()
-      }
-    }, resolver)
-
-    await promise
-
+        })
+    } catch (err) {
+      console.error(err)
+    }
     if (this._cacheDebugEnabled) {
       cacheMisses.sort()
       this._cacheDebug(
